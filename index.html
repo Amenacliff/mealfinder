@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/1080e5d849.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main.css">
+    <title>Meal Finder by Amena Cliff</title>
+</head>
+<body class="main">
+<h1 class="first-h1">Meal Finder</h1>
+<div class="flex">
+    <form class="flex" id="forma">
+      <input
+        type="text"
+        id="field"
+        placeholder="Search for meals or keywords"
+      />
+
+      <button class="search-btn" id="submit">
+        <i class="fas fa-search icon"></i>
+      </button>
+<button class="random-btn" id="search-random">
+    <i class="fas fa-random"></i>
+</button>
+</form>
+</div>
+<h1 class="resulthead" id="resultstate"></h1>
+<div class="mealsa" id='meals'></div><br><br><br>
+<div class="selected-meal" id="selected"></div><br><br><br>
+  <script src="app.js"></script>  
+</body>
+</html>
