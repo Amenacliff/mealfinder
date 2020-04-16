@@ -14,6 +14,7 @@ if(finalValue.length === 0){
     alert('Please input a Value')
 }
 if(finalValue.length === 1){
+    fillSelected.innerHTML = ''
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${finalValue}`)
     .then(res => res.json())
     .then(data =>{
@@ -92,11 +93,13 @@ if(finalValue.length === 1){
        .catch((err)=>{
         err = 'NO RESULTS FOUND',
         resultStatement.innerText = err
-        next.innerHTML =''
+        next.innerHTML ='';
+        fillSelected.innerHTML = '';
        })
 }
 
 else  if(finalValue.length > 0){
+    fillSelected.innerHTML = ''
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${finalValue}`)
     .then(res => res.json())
     .then(data =>{
@@ -175,7 +178,8 @@ else  if(finalValue.length > 0){
        .catch((err)=>{
         err = 'NO RESULTS FOUND',
         resultStatement.innerText = err
-        next.innerHTML =''
+        next.innerHTML ='';
+        fillSelected.innerHTML = ''
        })
 }
 
@@ -185,6 +189,8 @@ else  if(finalValue.length > 0){
 })
 
 searchRandom.addEventListener('click',(event)=>{
+
+    next.innerHTML = ''
 
     event.preventDefault()
 
