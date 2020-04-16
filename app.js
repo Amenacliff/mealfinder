@@ -35,7 +35,6 @@ if(finalValue.length === 1){
                     )
                     const ingredent = specs.strInstructions.split('.')
                     const ingredentPiece = []
-                    console.log(specs)
                     ingredentPiece.push(specs.strIngredient1)
                     ingredentPiece.push(specs.strIngredient2)
                     ingredentPiece.push(specs.strIngredient3)
@@ -59,7 +58,6 @@ if(finalValue.length === 1){
                     const filteredPiece = ingredentPiece.filter(peice=>{
                        return  peice !== ""
                     })
-                    console.log(filteredPiece)
                 fillSelected.innerHTML = 
                 `
                 <h1 class = 'resulthead'>${specs.strMeal}</h1><br><br>
@@ -114,13 +112,11 @@ else  if(finalValue.length > 0){
         const cards = document.getElementsByClassName('food-image')
         Array.from(cards).map(card =>{
             card.addEventListener('click',(event)=>{
-                console.log(event)
                 const specs = meals.find(meal=>
                     meal.strMeal.toLowerCase() === event.target.alt.toLowerCase()
                     )
                     const ingredent = specs.strInstructions.split('.')
                     const ingredentPiece = []
-                    console.log(specs)
                     ingredentPiece.push(specs.strIngredient1)
                     ingredentPiece.push(specs.strIngredient2)
                     ingredentPiece.push(specs.strIngredient3)
@@ -144,7 +140,6 @@ else  if(finalValue.length > 0){
                     const filteredPiece = ingredentPiece.filter(peice=>{
                        return  peice !== ""
                     })
-                    console.log(filteredPiece)
                 fillSelected.innerHTML = 
                 `
                 <h1 class = 'resulthead'>${specs.strMeal}</h1><br><br>
@@ -183,7 +178,6 @@ else  if(finalValue.length > 0){
        })
 }
 
-    console.log(finalValue)
 
     
 })
