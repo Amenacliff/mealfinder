@@ -15,7 +15,7 @@ if(finalValue.length === 0){
 }
 if(finalValue.length === 1){
     fillSelected.innerHTML = ''
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${finalValue}`)
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${finalValue}`)
     .then(res => res.json())
     .then(data =>{
         const meals = data.meals
@@ -29,12 +29,12 @@ if(finalValue.length === 1){
         const cards = document.getElementsByClassName('food-image')
         Array.from(cards).map(card =>{
             card.addEventListener('click',(event)=>{
-                console.log(event)
                 const specs = meals.find(meal=>
                     meal.strMeal.toLowerCase() === event.target.alt.toLowerCase()
                     )
                     const ingredent = specs.strInstructions.split('.')
                     const ingredentPiece = []
+                    const measurements = []
                     ingredentPiece.push(specs.strIngredient1)
                     ingredentPiece.push(specs.strIngredient2)
                     ingredentPiece.push(specs.strIngredient3)
@@ -55,9 +55,36 @@ if(finalValue.length === 1){
                     ingredentPiece.push(specs.strIngredient18)
                     ingredentPiece.push(specs.strIngredient19)
                     ingredentPiece.push(specs.strIngredient20)
-                    const filteredPiece = ingredentPiece.filter(peice=>{
-                       return  peice !== ""
+
+                    measurements.push(specs.strMeasure1)
+                    measurements.push(specs.strMeasure2)
+                    measurements.push(specs.strMeasure3)
+                    measurements.push(specs.strMeasure4)
+                    measurements.push(specs.strMeasure5)
+                    measurements.push(specs.strMeasure6)
+                    measurements.push(specs.strMeasure7)
+                    measurements.push(specs.strMeasure8)
+                    measurements.push(specs.strMeasure9)
+                    measurements.push(specs.strMeasure10)
+                    measurements.push(specs.strMeasure11)
+                    measurements.push(specs.strMeasure12)
+                    measurements.push(specs.strMeasure13)
+                    measurements.push(specs.strMeasure14)
+                    measurements.push(specs.strMeasure15)
+                    measurements.push(specs.strMeasure16)
+                    measurements.push(specs.strMeasure17)
+                    measurements.push(specs.strMeasure18)
+                    measurements.push(specs.strMeasure19)
+                    measurements.push(specs.strMeasure20)
+
+                    const filteredMeasure =  measurements.filter(measure =>{
+                        return measure !== " " && measure !== ""
                     })
+                    console.log(filteredMeasure)
+                    const filteredPiece = ingredentPiece.filter(piece=>{
+                       return  piece !== " "  && piece !== ""
+                    })
+                    console.log(filteredPiece)
                 fillSelected.innerHTML = 
                 `
                 <h1 class = 'resulthead'>${specs.strMeal}</h1><br><br>
@@ -74,13 +101,16 @@ if(finalValue.length === 1){
                 </div><br><br>
                 <h2 class = 'ingredientHead'>Ingredients</h2><br><br>
                 <div class= 'ingredient-div'>
-                ${filteredPiece.map(piece =>
-                    `<h4 class = 'ingredents-tags'>${[piece]}</h4>`
-                    )}
+                ${filteredPiece.map((piece, index) =>
+                `<h4 class = 'ingredents-tags'>${piece}, Measure : ${filteredMeasure[index] === undefined ? 'By Taste' : filteredMeasure[index]}</h4>`
+                )}
 
-                </div>
-                
+
                     
+                </div><br><br>
+                     <h1 class= 'video-h1' >Video on How to Prepare ${specs.strMeal}</h1><br>
+                     <button class = 'video-btn'><a href =${specs.strYoutube}>Video on ${specs.strMeal}</a<</button>
+
                 `
                 
             })
@@ -92,7 +122,7 @@ if(finalValue.length === 1){
         err = 'NO RESULTS FOUND',
         resultStatement.innerText = err
         next.innerHTML ='';
-        fillSelected.innerHTML = '';
+        fillSelected.innerHTML = ''
        })
 }
 
@@ -117,6 +147,7 @@ else  if(finalValue.length > 0){
                     )
                     const ingredent = specs.strInstructions.split('.')
                     const ingredentPiece = []
+                    const measurements = []
                     ingredentPiece.push(specs.strIngredient1)
                     ingredentPiece.push(specs.strIngredient2)
                     ingredentPiece.push(specs.strIngredient3)
@@ -137,9 +168,36 @@ else  if(finalValue.length > 0){
                     ingredentPiece.push(specs.strIngredient18)
                     ingredentPiece.push(specs.strIngredient19)
                     ingredentPiece.push(specs.strIngredient20)
-                    const filteredPiece = ingredentPiece.filter(peice=>{
-                       return  peice !== ""
+
+                    measurements.push(specs.strMeasure1)
+                    measurements.push(specs.strMeasure2)
+                    measurements.push(specs.strMeasure3)
+                    measurements.push(specs.strMeasure4)
+                    measurements.push(specs.strMeasure5)
+                    measurements.push(specs.strMeasure6)
+                    measurements.push(specs.strMeasure7)
+                    measurements.push(specs.strMeasure8)
+                    measurements.push(specs.strMeasure9)
+                    measurements.push(specs.strMeasure10)
+                    measurements.push(specs.strMeasure11)
+                    measurements.push(specs.strMeasure12)
+                    measurements.push(specs.strMeasure13)
+                    measurements.push(specs.strMeasure14)
+                    measurements.push(specs.strMeasure15)
+                    measurements.push(specs.strMeasure16)
+                    measurements.push(specs.strMeasure17)
+                    measurements.push(specs.strMeasure18)
+                    measurements.push(specs.strMeasure19)
+                    measurements.push(specs.strMeasure20)
+
+                    const filteredMeasure =  measurements.filter(measure =>{
+                        return measure !== " " && measure !== ""
                     })
+                    console.log(filteredMeasure)
+                    const filteredPiece = ingredentPiece.filter(piece=>{
+                       return  piece !== " "  && piece !== ""
+                    })
+                    console.log(filteredPiece)
                 fillSelected.innerHTML = 
                 `
                 <h1 class = 'resulthead'>${specs.strMeal}</h1><br><br>
@@ -156,13 +214,16 @@ else  if(finalValue.length > 0){
                 </div><br><br>
                 <h2 class = 'ingredientHead'>Ingredients</h2><br><br>
                 <div class= 'ingredient-div'>
-                ${filteredPiece.map(piece =>
-                    `<h4 class = 'ingredents-tags'>${[piece]}</h4>`
-                    )}
+                ${filteredPiece.map((piece, index) =>
+                `<h4 class = 'ingredents-tags'>${piece}, Measure : ${filteredMeasure[index] === undefined ? 'By Taste' : filteredMeasure[index]}</h4>`
+                )}
 
-                </div>
-                
+
                     
+                </div><br><br>
+                     <h1 class= 'video-h1' >Video on How to Prepare ${specs.strMeal}</h1><br>
+                     <button class = 'video-btn'><a href =${specs.strYoutube}>Video on ${specs.strMeal}</a<</button>
+
                 `
                 
             })
@@ -198,64 +259,90 @@ searchRandom.addEventListener('click',(event)=>{
     // <h3 class='return-text'>${meal.strMeal}</h3>
     // </div>`
     //     )
-                const specs = meals[0]
-                console.log(specs)
-                    const ingredent = specs.strInstructions.split('.')
-                    const ingredentPiece = []
-                    console.log(specs)
-                    ingredentPiece.push(specs.strIngredient1)
-                    ingredentPiece.push(specs.strIngredient2)
-                    ingredentPiece.push(specs.strIngredient3)
-                    ingredentPiece.push(specs.strIngredient4)
-                    ingredentPiece.push(specs.strIngredient5)
-                    ingredentPiece.push(specs.strIngredient6)
-                    ingredentPiece.push(specs.strIngredient7)
-                    ingredentPiece.push(specs.strIngredient8)
-                    ingredentPiece.push(specs.strIngredient9)
-                    ingredentPiece.push(specs.strIngredient10)
-                    ingredentPiece.push(specs.strIngredient11)
-                    ingredentPiece.push(specs.strIngredient12)
-                    ingredentPiece.push(specs.strIngredient13)
-                    ingredentPiece.push(specs.strIngredient14)
-                    ingredentPiece.push(specs.strIngredient15)
-                    ingredentPiece.push(specs.strIngredient16)
-                    ingredentPiece.push(specs.strIngredient17)
-                    ingredentPiece.push(specs.strIngredient18)
-                    ingredentPiece.push(specs.strIngredient19)
-                    ingredentPiece.push(specs.strIngredient20)
-                    const filteredPiece = ingredentPiece.filter(peice=>{
-                       return  peice !== ''
-                    })
-                    console.log(filteredPiece)
-                fillSelected.innerHTML = 
-                `
-                <h1 class = 'resulthead'>${specs.strMeal}</h1><br><br>
-                <img class ='food-image-b' src="${specs.strMealThumb}" alt="food" ><br><br>
-                <div class ='infoDeep'>
-                    <p class = 'spectext'>${specs.strArea}</p><br><br>
-                    <p class = 'spectext'>${specs.strCategory}</p><br><br>
-                    </div><br<br>
-                <div>
-                ${ingredent.map(ingred=>
-                    `
-                    <p class = 'ingred'>${ingred}</p>
-                    `)}
-                </div><br><br>
-                <h2 class = 'ingredientHead'>Ingredients</h2><br><br>
-                <div class= 'ingredient-div'>
-                ${filteredPiece.map(piece =>
-                    `<h4 class = 'ingredents-tags'>${[piece]}</h4>`
-                    )}
+    const specs = meals[0]
+        const ingredent = specs.strInstructions.split('.')
+        const ingredentPiece = []
+        const measurements = []
+        ingredentPiece.push(specs.strIngredient1)
+        ingredentPiece.push(specs.strIngredient2)
+        ingredentPiece.push(specs.strIngredient3)
+        ingredentPiece.push(specs.strIngredient4)
+        ingredentPiece.push(specs.strIngredient5)
+        ingredentPiece.push(specs.strIngredient6)
+        ingredentPiece.push(specs.strIngredient7)
+        ingredentPiece.push(specs.strIngredient8)
+        ingredentPiece.push(specs.strIngredient9)
+        ingredentPiece.push(specs.strIngredient10)
+        ingredentPiece.push(specs.strIngredient11)
+        ingredentPiece.push(specs.strIngredient12)
+        ingredentPiece.push(specs.strIngredient13)
+        ingredentPiece.push(specs.strIngredient14)
+        ingredentPiece.push(specs.strIngredient15)
+        ingredentPiece.push(specs.strIngredient16)
+        ingredentPiece.push(specs.strIngredient17)
+        ingredentPiece.push(specs.strIngredient18)
+        ingredentPiece.push(specs.strIngredient19)
+        ingredentPiece.push(specs.strIngredient20)
 
-                </div>
-                
-                    
-                `
-            
-       })
-       .catch((err)=>{
-        err = 'NO RESULTS FOUND',
-        resultStatement.innerText = err
-        next.innerHTML =''
-    })
+        measurements.push(specs.strMeasure1)
+        measurements.push(specs.strMeasure2)
+        measurements.push(specs.strMeasure3)
+        measurements.push(specs.strMeasure4)
+        measurements.push(specs.strMeasure5)
+        measurements.push(specs.strMeasure6)
+        measurements.push(specs.strMeasure7)
+        measurements.push(specs.strMeasure8)
+        measurements.push(specs.strMeasure9)
+        measurements.push(specs.strMeasure10)
+        measurements.push(specs.strMeasure11)
+        measurements.push(specs.strMeasure12)
+        measurements.push(specs.strMeasure13)
+        measurements.push(specs.strMeasure14)
+        measurements.push(specs.strMeasure15)
+        measurements.push(specs.strMeasure16)
+        measurements.push(specs.strMeasure17)
+        measurements.push(specs.strMeasure18)
+        measurements.push(specs.strMeasure19)
+        measurements.push(specs.strMeasure20)
+
+        const filteredMeasure =  measurements.filter(measure =>{
+            return measure !== " " && measure !== ""
+        })
+        console.log(filteredMeasure)
+        const filteredPiece = ingredentPiece.filter(piece=>{
+           return  piece !== " "  && piece !== ""
+        })
+        console.log(filteredPiece)
+    fillSelected.innerHTML = 
+    `
+    <h1 class = 'resulthead'>${specs.strMeal}</h1><br><br>
+    <img class ='food-image-b' src="${specs.strMealThumb}" alt="food" ><br><br>
+    <div class ='infoDeep'>
+        <p class = 'spectext'>${specs.strArea}</p><br><br>
+        <p class = 'spectext'>${specs.strCategory}</p><br><br>
+        </div><br<br>
+    <div>
+    ${ingredent.map(ingred=>
+        `
+        <p class = 'ingred'>${ingred}</p>
+        `)}
+    </div><br><br>
+    <h2 class = 'ingredientHead'>Ingredients</h2><br><br>
+    <div class= 'ingredient-div'>
+    ${filteredPiece.map((piece, index) =>
+    `<h4 class = 'ingredents-tags'>${piece}, Measure : ${filteredMeasure[index] === undefined ? 'By Taste' : filteredMeasure[index]}</h4>`
+    )}
+
+
+        
+    </div><br><br>
+         <h1 class= 'video-h1' >Video on How to Prepare ${specs.strMeal}</h1><br>
+         <button class = 'video-btn'><a href =${specs.strYoutube}>Video on ${specs.strMeal}</a<</button>
+
+    `
+    
+})
+
+
+
 })

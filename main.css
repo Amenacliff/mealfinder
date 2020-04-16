@@ -74,7 +74,7 @@
  @media screen and (max-width:600px){
     .ingred{
         color:white;
-        font-size: 15px
+        font-size: 15px;
     }
 
  }
@@ -82,9 +82,28 @@
     .ingred{
         color:white;
         font-size: 20px;
+        text-align: center;
     }
 
-    
+    .video-btn{
+      display: block;
+      margin: auto;
+      width: auto;
+      height: auto;
+      padding: 10px;
+      font-size: 20px;
+      background-color:white;
+      color:white;
+      border:white 2px solid;
+      border-radius: 5px;
+    }
+
+    .video-btn a{
+      text-decoration: none;
+      color:black;
+      font-family: 'Roboto Slab', serif;
+      
+    }
 
  }
 
@@ -130,6 +149,11 @@
     padding: 10px;
 }
 
+.video-h1{
+  text-align: center;
+  color:white;
+  font-size: 30px;
+}
 .ingredientHead{
     text-align: center;
     font-size:40px;
