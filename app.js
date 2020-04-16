@@ -78,13 +78,11 @@ if(finalValue.length === 1){
                     measurements.push(specs.strMeasure20)
 
                     const filteredMeasure =  measurements.filter(measure =>{
-                        return measure !== " " && measure !== ""
+                        return measure !== " " && measure !== "" && measure !== null
                     })
-                    console.log(filteredMeasure)
                     const filteredPiece = ingredentPiece.filter(piece=>{
-                       return  piece !== " "  && piece !== ""
+                       return  piece !== " "  && piece !== "" && piece !== null
                     })
-                    console.log(filteredPiece)
                 fillSelected.innerHTML = 
                 `
                 <h1 class = 'resulthead'>${specs.strMeal}</h1><br><br>
@@ -191,13 +189,11 @@ else  if(finalValue.length > 0){
                     measurements.push(specs.strMeasure20)
 
                     const filteredMeasure =  measurements.filter(measure =>{
-                        return measure !== " " && measure !== ""
+                        return measure !== "" && measure !== " " && measure !== null
                     })
-                    console.log(filteredMeasure)
                     const filteredPiece = ingredentPiece.filter(piece=>{
-                       return  piece !== " "  && piece !== ""
+                       return piece !== "" && piece !== " " && piece !== null
                     })
-                    console.log(filteredPiece)
                 fillSelected.innerHTML = 
                 `
                 <h1 class = 'resulthead'>${specs.strMeal}</h1><br><br>
@@ -246,7 +242,7 @@ else  if(finalValue.length > 0){
 searchRandom.addEventListener('click',(event)=>{
 
     next.innerHTML = ''
-
+    resultStatement.innerHTML = ''
     event.preventDefault()
 
     fetch('https://www.themealdb.com/api/json/v1/1/random.php')
@@ -306,13 +302,11 @@ searchRandom.addEventListener('click',(event)=>{
         measurements.push(specs.strMeasure20)
 
         const filteredMeasure =  measurements.filter(measure =>{
-            return measure !== " " && measure !== ""
+            return measure !== " " && measure !== "" && measure !== null
         })
-        console.log(filteredMeasure)
         const filteredPiece = ingredentPiece.filter(piece=>{
-           return  piece !== " "  && piece !== ""
+           return  piece !== " "  && piece !== "" && piece !== null
         })
-        console.log(filteredPiece)
     fillSelected.innerHTML = 
     `
     <h1 class = 'resulthead'>${specs.strMeal}</h1><br><br>
