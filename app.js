@@ -21,8 +21,6 @@ const getSpecData = (textToFind, arrayOfSpecs)=>{
         return eachSpec[1]
     })
 
-    console.log(finalArrayOfSpecsNeeded)
-
     return finalArrayOfSpecsNeeded
 }
 
@@ -54,7 +52,7 @@ else  if(finalValue.length > 0){
                 const specs = meals.find(meal=>
                     meal.strMeal.toLowerCase() === event.target.alt.toLowerCase()
                     )
-                    const ingredent = specs.strInstructions.split('.')
+                    const instructions = specs.strInstructions.split('.')
 
                     const arrayOfSpecsData =  Object.entries(specs)
                     
@@ -70,7 +68,7 @@ else  if(finalValue.length > 0){
                     <p class = 'spectext'>${specs.strCategory}</p><br><br>
                     </div><br<br>
                 <div>
-                ${ingredent.map(ingred=>
+                ${instructions.map(ingred=>
                     `
                     <p class = 'ingred'>${ingred}</p>
                     `)}
@@ -87,8 +85,11 @@ else  if(finalValue.length > 0){
                      <button class = 'video-btn'><a href =${specs.strYoutube}>Video on ${specs.strMeal}</a<</button>
 
                 `
-
+                
                  fillSelected.innerHTML = newFillSeciton.replaceAll(',', '')
+                 fillSelected.scrollIntoView({
+                     behavior : 'smooth'
+                 })
             })
             
         })
@@ -123,10 +124,12 @@ searchRandom.addEventListener('click',(event)=>{
     //     )
     const specs = meals[0]
     const arrayOfSpecsData =  Object.entries(specs)
+
+    const instructions = specs.strInstructions.split('.')
+
                     
     const ingredents = getSpecData('strIngredient', arrayOfSpecsData)
     const measurements = getSpecData('strMeasure', arrayOfSpecsData)
-        
     const newFillSeciton = 
                 `
                 <h1 class = 'resulthead'>${specs.strMeal}</h1><br><br>
@@ -136,7 +139,7 @@ searchRandom.addEventListener('click',(event)=>{
                     <p class = 'spectext'>${specs.strCategory}</p><br><br>
                     </div><br<br>
                 <div>
-                ${ingredents.map(ingred=>
+                ${instructions.map(ingred=>
                     `
                     <p class = 'ingred'>${ingred}</p>
                     `)}
@@ -154,10 +157,6 @@ searchRandom.addEventListener('click',(event)=>{
 
                 `
 
-                 fillSelected.innerHTML = newFillSeciton.replaceAll(',', '')
-    
+                 fillSelected.innerHTML = newFillSeciton.replaceAll(',', '')  
 })
-
-
-
 })
